@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="title">My users page</h1>
+    <div id="users-list">
+        <div id="users-data">
+            <div>Name</div>
+            <div>Age</div>
+            <div>Edit</div>
+            <div>Delete</div>
+        </div>
+    </div>
+    <div class="add-user-container">
+        <div class="button-container">
+            <button class="add-new-user add-user-trigger" >+ Add new user</button>
+        </div>
+        <form method="post" id="add-user-form">
+            <label for="user-name-input">Enter your first name</label>
+            <input type="text" name="name" id="user-name-input" onkeypress="return /[a-z]/i.test(event.key)" maxlength="20" placeholder="eg. John">
+            <div class="error error-name">Your name should be 2 to 20 letters long!</div>
+            <label for="user-age-input">Enter your age</label>
+            <input type="text" pattern="\d*" maxlength="3" name="age" id="user-age-input" onkeypress="return /[0-9]/i.test(event.key)" placeholder="eg. 21">
+            <div class="error error-age">Your age should be a number between 1 and 130!</div>
+            <button type="button" class="add-new-user add-user-submit" >Add user</button>
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="module" src="../helpers/inputValidation.js"></script>
+    <script src="./index.js">
+    </script>
+</body>
+</html>

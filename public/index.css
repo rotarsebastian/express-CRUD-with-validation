@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+.title {
+    text-align: center;
+    margin: 1rem auto;
+}
+
+#users-list {
+    padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#users-data {
+    display: flex;
+    font-weight: bold;
+    border: 2px solid #eee;
+    border-bottom: none;
+    padding: 5px 0;
+    color: green;
+}
+
+.user, #users-data {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user {
+    padding: .65rem 0;
+}
+
+.user:nth-child(2n) {
+    background: #eee;
+}
+
+.user:nth-child(2n+1) {
+    background: rgba(238, 238, 238, 0.267);
+}
+
+.user div, #users-data div {
+    width: 25%;
+    text-transform: capitalize;
+}
+
+.user div:first-child, #users-data div:first-child {
+    margin-left: 2%;
+    width: 23%;
+}
+
+.user button {
+    padding: .5rem 1rem;
+    border-radius: 4px;
+    outline: none;
+}
+
+.user-edit {
+    text-decoration: underline;
+    color: #4f4fcc;
+}
+
+.user-edit:hover {
+    color: #0000e7;
+}
+
+.user .user-delete, .user .user-edit {
+    cursor: pointer;
+}
+
+.add-user-container {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-user-container form, .add-user-container .button-container {
+    width: 90%;
+}
+
+.add-user-container form {
+    display: none;
+}
+
+.add-new-user {
+    font-size: 16px;
+    padding: .5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    background: cadetblue;
+    color: white;
+    outline: none;
+    transition: .3s;
+}
+
+.add-new-user:hover {
+    transform: scale(1.05);
+}
+
+.add-user-container form label, .add-user-container form input {
+    display: block;
+    margin: .5rem 0;
+    margin-bottom: 0;
+}
+
+.add-user-container form input {
+    padding: .4rem;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #737272;
+    width: 15vw;
+    font-size: 15px;
+}
+
+input[type=text] {
+    text-transform: capitalize;
+}
+
+.add-user-trigger {
+    -webkit-transition: opacity .3s ease-in-out;
+    -moz-transition: opacity .3s ease-in-out;
+    -ms-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    opacity: 1;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    padding: .2rem 0;
+    display: none;
+}
+
+.valid-input {
+    border: 1px solid #78d678 !important;
+}
+
+.add-user-submit {
+    margin-top: .65rem;
+}
