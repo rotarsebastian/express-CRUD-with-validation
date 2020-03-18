@@ -97,7 +97,7 @@ app.put('/users/:id', (req, res) => {
                 }
             }
         }
-        newUser = { ...users[foundIndex], ...req.body };
+        newUser = { ...users[foundIndex], ...newUser };
         users[foundIndex] = newUser;
         return res.send({ status: 1, updated: users[foundIndex] });
     }
