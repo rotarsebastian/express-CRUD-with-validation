@@ -31,11 +31,11 @@ let currentID = 2;
 // });
 
 // Get user
-// app.get('/users/:id', (req, res) => {
-//     const { id } = req.params;
-//     const user = users.find(user => user.id === Number(id));
-//     return res.send(user);
-// });
+app.get('/users/:id', (req, res) => {
+    const { id } = req.params;
+    const user = users.find(user => user.id === Number(id));
+    return res.send(user);
+});
 
 app.get('/', (req, res) => {
     return res.sendFile(`${__dirname}/public/index.html`);
@@ -83,12 +83,24 @@ app.delete('/delete/:id', (req, res) => {
 // Update user
 app.put('/users/:id', (req, res) => {
     const { id } = req.params;
-    
     const foundIndex = users.findIndex(user => user.id === Number(id));
-    const newUser = { ...users[foundIndex], ...req.body };
-    users[foundIndex] = newUser;
-
-    return res.send({ status: 1, updated: users[foundIndex] });
+    if(foundIndex >= 0) {
+        let newUser = req.body;
+        for(let property in newUser) {
+            if(property !== 'id') {
+                const value = newUser[property];
+                const isInputValid = inputValidation.validateInput(property, value);
+                if(!isInputValid) {
+                    return res.send({ status: 0, error: `Property ${property} with value ${value} is not valid` }); 
+                } else {
+                    newUser[property] = inputValidation.bypassInput(property, value);
+                }
+            }
+        }
+        newUser = { ...users[foundIndex], ...req.body };
+        users[foundIndex] = newUser;
+        return res.send({ status: 1, updated: users[foundIndex] });
+    }
 });
 
 app.listen(9090, (err) => { 
