@@ -91,7 +91,7 @@ body, html {
     cursor: pointer;
 }
 
-.user .user-edit {
+.user .user-edit, #users-data .user-edit-column {
     width: auto;
 }
 
