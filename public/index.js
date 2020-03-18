@@ -70,9 +70,9 @@ $(document).ready(() => {
     });
 });
 
-$(document).on('click', '.user .user-delete', (event) => {
-    event.preventDefault();
-    const { parentElement: userContainer } = event.target.parentElement;
+$(document).on('click', '.user .user-delete', (e) => {
+    e.preventDefault();
+    const { parentElement: userContainer } = e.target.parentElement;
     const id = $(userContainer).data('id');
     console.log(id, userContainer)
     $.ajax({
@@ -104,16 +104,16 @@ $(document).on('focusout', '#add-user-form input', (e) => {
     isInputValid ? showValidInput(inputType) : null;
 });
 
-$(document).on('click', '.add-user-trigger', (event) => {
-    event.preventDefault();
-    const { target: addUserTrigger } = event;
+$(document).on('click', '.add-user-trigger', (e) => {
+    e.preventDefault();
+    const { target: addUserTrigger } = e;
     $(addUserTrigger).addClass('hide').removeClass('show');
     $('#add-user-form').fadeIn();
     $('.error').fadeOut();
 });
 
-$(document).on('click', '.add-user-submit', (event) => {
-    event.preventDefault();
+$(document).on('click', '.add-user-submit', (e) => {
+    e.preventDefault();
     if(!validateForm()) {
         return;
     } else {
@@ -137,6 +137,8 @@ $(document).on('click', '.add-user-submit', (event) => {
                     const { id, name, age } = res.createdUser;
                     addUserToDom(id, name, age);
                     toastr.success('User successfully added!');
+                } else {
+                    console.log(`Error creating user! Error: ${res.error}`)
                 }
             },
             error: (err) => {
