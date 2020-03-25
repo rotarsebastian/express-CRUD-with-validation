@@ -122,6 +122,7 @@ $(document).on('click', '.user .user-edit', (e) => {
                 const data = $(el).data('editable');
                 const value = user[data];
                 $(el).html(value);
+                $(el).removeClass('invalid-input').removeClass('valid-input');
                 $(e.target).next().css({'display': 'none'});
             });
         });
